@@ -18,6 +18,7 @@ class SportsController < ApplicationController
     end
 
     post '/register' do 
+        
         @user = current_user
         if params[:sport].blank? && params[:age].blank? && params[:skill_level].blank?
             redirect "/register"
