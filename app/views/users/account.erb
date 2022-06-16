@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html>
-<body>
 <h1>Welcome <%= @user.username %> to your Sports Join account</h1>
   <p>To register for a sport you can click on the "Register" button below. The sport(s) you are registered for will show below after you have registered.</p>
   <br><br>
   <a href="/register">Register</a>
 </form>
 <h2>Joined Sport(s)</h2>
-<% @user.sports.each do |sport| %>
-  <p><%= sport.sport %></p>
+<% @user.sports.each do |s| %>
+  <p><%= s.sport %> - 
+    <%# <% if User.find(session[:user_id]) == sport.user %> 
+    <% if current_user == s.user %>
+      <a href="/sports/<%= s.id %>/edit">Edit</a>
+    <% end %>
+  </p>
 <% end %>
     
 
 
-</body>
-</html>
+
 
 
 
