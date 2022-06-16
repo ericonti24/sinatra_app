@@ -11,13 +11,14 @@
   </ol>
 
 <form action="/sports/<%= @sport.id%>" method="POST">
-    <input type="hidden" name="_method" value="patch">
-  <label for="sport">Sport: <%= @sport.sport%> </label>
-  <input type="text" name="sport" id="sport"><br>
-  <label for="age">Age: <%= @sport.age%></label>
-  <input type="ingeger" name="age" id="age"><br>
-  <label for="skill_level">Skill Level: <%=@sport.skill_level%></label>
-  <input type="text" name="skill_level" id="skill_level">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="sport">Sport: </label>
+  <input type="text" name="sport" id="sport" value="<%= @sport.sport%>"><br>
+  <label for="age">Age: </label>
+  <input type="ingeger" name="age" id="age" value="<%= @sport.age%>"><br>
+  <label for="skill_level">Skill Level: </label>
+  <input type="text" name="skill_level" id="skill_level" value="<%= @sport.skill_level%>">
   <br><br>
   <input type="submit" value="Submit">
 </form>

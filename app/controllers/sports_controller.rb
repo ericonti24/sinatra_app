@@ -9,51 +9,35 @@ class SportsController < ApplicationController
     end
 
     post '/register' do 
-        
-        # @user = current_user
-        # binding.pry
-        # if params[:sport].blank? && params[:age].blank? && params[:skill_level].blank?
-        #     redirect "/register"
-        # else
-        #     @sport = @user.sports.new(params)
-        #     @user.save
-        #     redirect "/sports/#{@sport.id}"
-        # end
         @sport = Sport.new(params)
         @sport.user_id = session[:user_id]
         @sport.save
         redirect "/sports/#{@sport.id}"
     end
 
-
-
     get '/sports/:id' do 
-        # @sport = Sport.find_by(id: params[:id])
         get_sport
-        # binding.pry
-        # if logged_in?
-        #     erb :"sports/reg_complete"
-        # else
-        #     redirect '/login'
-        # end
         erb :"sports/reg_complete"
     end
 
     get '/sports/:id/edit' do 
-        # @sport = Sport.find_by(id: params[:id])
         get_sport
-        if @sport.user == current_user #if current user is logged in render edit form
+        if @sport.user == current_user 
             erb :"/sports/edit"
         end
     end
 
     patch '/sports/:id' do 
-        # @sport = Sport.find_by_id(params[:id])
         get_sport
         redirect_if_not_authorized
         @sport.update(sport: params[:sport], age: params[:age], skill_level: params[:skill_level])
-        # redirect "/sports/#{@sport.id}"
-        redirect "/account"
+        redirect "/sports/#{@sport.id}"
+    end
+
+    delete '/sports/:id' do 
+        get_sport
+        @sport.destroy
+        redirect '/account'
     end
 
     private 
@@ -63,7 +47,7 @@ class SportsController < ApplicationController
         end
 
         def redirect_if_not_authorized
-            if @post.author != current_user
+            if @sport.user != current_user
                 flash[:error] = "You cant make this edit, you don't own this"
                 redirect '/posts'
             end 
