@@ -14,7 +14,15 @@
   <input type="hidden" name="_method" value="patch">
 
   <label for="sport">Sport: </label>
-  <input type="text" name="sport" id="sport" value="<%= @sport.sport%>"><br>
+  <%# <input type="text" name="sport" id="sport" value="<%= @sport.sport%>
+  <select name="sport" id="sport" value="<%= @sport.sport%>">
+    <option value="Baseball">Baseball</option>
+    <option value="Basketball">Basketball</option>
+    <option value="Soccer">Soccer</option>
+    <option value="Tennis">Tennis</option>
+    <option value="Kickball">Kickball</option>
+    <option value="Flag Football">Flag Football</option>
+  </select><br>
   <label for="age">Age: </label>
   <input type="ingeger" name="age" id="age" value="<%= @sport.age%>"><br>
   <label for="skill_level">Skill Level: </label>

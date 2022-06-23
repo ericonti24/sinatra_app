@@ -17,7 +17,15 @@
   <h2>Sign Up</h2>
 <form action="/register" method="POST">
   <label for="sport">Sport: </label>
-  <input type="text" name="sport" id="sport"><br>
+  <%# <input type="text" name="sport" id="sport"><br> %>
+  <select name="sport" id="sport">
+    <option value="Baseball">Baseball</option>
+    <option value="Basketball">Basketball</option>
+    <option value="Soccer">Soccer</option>
+    <option value="Tennis">Tennis</option>
+    <option value="Kickball">Kickball</option>
+    <option value="Flag Football">Flag Football</option>
+  </select><br>
   <label for="age">Age: </label>
   <input type="ingeger" name="age" id="age"><br>
   <label for="skill_level">Skill Level: </label>
