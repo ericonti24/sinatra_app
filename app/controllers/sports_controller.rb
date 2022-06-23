@@ -22,6 +22,7 @@ class SportsController < ApplicationController
 
     get '/sports/:id/edit' do 
         get_sport
+        redirect_if_not_authorized
         if @sport.user == current_user 
             erb :"/sports/edit"
         end
@@ -48,8 +49,7 @@ class SportsController < ApplicationController
 
         def redirect_if_not_authorized
             if @sport.user != current_user
-                flash[:error] = "You cant make this edit, you don't own this"
-                redirect '/posts'
+                redirect '/account'
             end 
         end 
 
